@@ -22,7 +22,7 @@ using System.Text;
 
 namespace SSQLib
 {
-    class SSQLServerException : System.Exception
+    public class SSQLServerException : System.Exception
     {
         public SSQLServerException(string message) : base(message)
         {
