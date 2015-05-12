@@ -2,9 +2,8 @@ language: csharp
 
 env:
  global:
-  - EnableNuGetPackageRestore=true 
+  - EnableNuGetPackageRestore=true
  matrix:
-  - MONO_VERSION="3.8.0"  
+  - MONO_VERSION="3.8.0"
 script:
- - cd SSQLib
  - xbuild
