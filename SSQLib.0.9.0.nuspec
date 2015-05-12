@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>SSQLib</id>
+        <version>0.9.0</version>
+        <authors>leewalkergm@gmail.com</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A simple Source Server Query Library</description>
+        <frameworkAssemblies>
+            <frameworkAssembly assemblyName="System" targetFramework=".NETFramework3.5" />
+            <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework3.5" />
+            <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework=".NETFramework3.5" />
+            <frameworkAssembly assemblyName="System.Data.DataSetExtensions" targetFramework=".NETFramework3.5" />
+            <frameworkAssembly assemblyName="System.Data" targetFramework=".NETFramework3.5" />
+            <frameworkAssembly assemblyName="System.Xml" targetFramework=".NETFramework3.5" />
+        </frameworkAssemblies>
+    </metadata>
+    <files>
+        <file src="Properties\AssemblyInfo.cs" target="src\AssemblyInfo.cs" />
+        <file src="Packet.cs" target="src\Packet.cs" />
+        <file src="PlayerInfo.cs" target="src\PlayerInfo.cs" />
+        <file src="ServerInfo.cs" target="src\ServerInfo.cs" />
+        <file src="SocketUtils.cs" target="src\SocketUtils.cs" />
+        <file src="SSQL.cs" target="src\SSQL.cs" />
+        <file src="SSQLServerException.cs" target="src\SSQLServerException.cs" />
+    </files>
+</package>
