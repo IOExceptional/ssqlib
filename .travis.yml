@@ -4,8 +4,7 @@ env:
  global:
   - EnableNuGetPackageRestore=true
 install:
- - nuget install xunit.runner.console -Version 2.0.0 -OutputDirectory packages
+ - nuget install xunit.runners -Version 1.9.2 -OutputDirectory packages
 script:
  - xbuild /p:Configuration=Release SSQLib.sln
- - cd Artifacts/bin/Test.SSQLib/
- - mono ../../../packages/xunit.runner.console.2.0.0/tools/xunit.console.exe Test.SSQLib.dll
+ - mono ./packages/xunit.runners.1.9.2/tools/xunit.console.clr4.exe Artifacts/bin/Test.SSQLib/Test.SSQLib.dll
