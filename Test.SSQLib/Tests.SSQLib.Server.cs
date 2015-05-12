@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Test.SSQLib
 {
-    public class Tests
+    public class ServerTests
     {
         [Fact]
         public void TestFakeServerThrowsException()
