@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/leewalkergm/ssqlib.svg?branch=master)](https://travis-ci.org/leewalkergm/ssqlib)
+
 # ssqlib
 A Source Server Query Library - Exported from code.google.com/p/ssqlib
 
