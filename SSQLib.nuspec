@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SSQLib</id>
+    <version>$version$</version>
+    <title></title>
+    <authors>Lee Walker, Elliott Spencer</authors>
+    <owners>Lee Walker</owners>
+    <licenseUrl>https://github.com/leewalkergm/ssqlib/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>http://leewalkergm.github.io/ssqlib/</projectUrl>
+    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Source Server Query Library</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright &#x00A9; Lee Walker.  All rights reserved.</copyright>
+    <tags>Source Server Query Library Valve Counterstrike Global Offensive</tags>
+  </metadata>
+  <files>
+    <file src="Artifacts\bin\SSQLib\SSQLib.dll" target="lib\net40\" />
+  </files>
+</package>

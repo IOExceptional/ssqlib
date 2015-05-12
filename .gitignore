@@ -1,5 +1,7 @@
 !Artifacts/
 Artifacts/*
+!Build/
+Build/*
 !packages/
 packages/*
 SSQLib/bin
