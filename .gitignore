@@ -1,5 +1,9 @@
 !Artifacts/
 Artifacts/*
+!packages/
+packages/*
 SSQLib/bin
 SSQLib/obj
+Test.SSQLib/bin
+Test.SSQLib/obj
 *.suo

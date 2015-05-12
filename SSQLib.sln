@@ -5,6 +5,13 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSQLib", "SSQLib\SSQLib.csproj", "{3F273B18-3C15-420B-BD8F-DED3E4E52996}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.SSQLib", "Test.SSQLib\Test.SSQLib.csproj", "{40A71D43-1006-4D54-8D71-AE959D1FC50C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D321111F-6633-4DC1-B240-CB811AE0E0B4}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +22,10 @@ Global
 		{3F273B18-3C15-420B-BD8F-DED3E4E52996}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F273B18-3C15-420B-BD8F-DED3E4E52996}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F273B18-3C15-420B-BD8F-DED3E4E52996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A71D43-1006-4D54-8D71-AE959D1FC50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A71D43-1006-4D54-8D71-AE959D1FC50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A71D43-1006-4D54-8D71-AE959D1FC50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A71D43-1006-4D54-8D71-AE959D1FC50C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
