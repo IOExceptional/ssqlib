@@ -1,9 +1,7 @@
-[![Build Status](https://travis-ci.org/leewalkergm/ssqlib.svg?branch=master)](https://travis-ci.org/leewalkergm/ssqlib)
+[![Build Status](https://travis-ci.org/leewalkergm/ssqlib.svg?branch=master)](https://travis-ci.org/leewalkergm/ssqlib) [![Package Status](https://img.shields.io/nuget/dt/SSQLib.svg)](https://www.nuget.org/packages/SSQLib/)
 
-[![Build Status](https://img.shields.io/nuget/dt/SSQLib.svg)](https://www.nuget.org/packages/SSQLib/)
-
-
-# ssqlib
+# SSQLib
+## *Source Server Query Library*
 A Source Server Query Library - Exported from code.google.com/p/ssqlib
 
 

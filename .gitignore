@@ -2,3 +2,4 @@
 Artifacts/*
 SSQLib/bin
 SSQLib/obj
+*.suo
