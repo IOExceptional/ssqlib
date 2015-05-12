@@ -16,12 +16,12 @@
         </frameworkAssemblies>
     </metadata>
     <files>
-        <file src="Properties\AssemblyInfo.cs" target="src\AssemblyInfo.cs" />
-        <file src="Packet.cs" target="src\Packet.cs" />
-        <file src="PlayerInfo.cs" target="src\PlayerInfo.cs" />
-        <file src="ServerInfo.cs" target="src\ServerInfo.cs" />
-        <file src="SocketUtils.cs" target="src\SocketUtils.cs" />
-        <file src="SSQL.cs" target="src\SSQL.cs" />
-        <file src="SSQLServerException.cs" target="src\SSQLServerException.cs" />
+        <file src="SSQLib\Properties\AssemblyInfo.cs" target="src\AssemblyInfo.cs" />
+        <file src="SSQLib\Packet.cs" target="src\Packet.cs" />
+        <file src="SSQLib\PlayerInfo.cs" target="src\PlayerInfo.cs" />
+        <file src="SSQLib\ServerInfo.cs" target="src\ServerInfo.cs" />
+        <file src="SSQLib\SocketUtils.cs" target="src\SocketUtils.cs" />
+        <file src="SSQLib\SSQL.cs" target="src\SSQL.cs" />
+        <file src="SSQLib\SSQLServerException.cs" target="src\SSQLServerException.cs" />
     </files>
 </package>

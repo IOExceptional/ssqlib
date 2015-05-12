@@ -1,0 +1,4 @@
+!Artifacts/
+Artifacts/*
+SSQLib/bin
+SSQLib/obj
