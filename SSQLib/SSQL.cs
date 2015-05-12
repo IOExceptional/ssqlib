@@ -193,10 +193,10 @@ namespace SSQLib
         /// </summary>
         /// <param name="ip_end">The IPEndPoint object storing the IP address and port of the server</param>
         /// <returns>An ArrayList of PlayerInfo or throws an SSQLServerException if the server could not be reached</returns>
-        public ArrayList Players(IPEndPoint ip_end)
+        public List<PlayerInfo> Players(IPEndPoint ip_end)
         {
             //Create a new array list to store the player array
-            ArrayList players = new ArrayList();
+            List<PlayerInfo> players = new List<PlayerInfo>();
 
             //Create a new buffer to receive packets
             byte[] buf = null;
