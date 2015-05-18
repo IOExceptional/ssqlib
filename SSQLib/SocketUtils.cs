@@ -28,7 +28,7 @@ namespace SSQLib
     {
         private SocketUtils() { }
 
-        internal static byte[] getInfo(IPEndPoint ipe, Packet packet)
+        internal static byte[] getInfo(EndPoint ipe, Packet packet)
         {
             //Create the socket
             Socket srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
@@ -52,7 +52,7 @@ namespace SSQLib
 
             //Create a new receive buffer
             byte[] rcvPacketInfo = new byte[packetSize];
-            EndPoint Remote = (EndPoint)ipe;
+            EndPoint Remote = ipe;
 
             try
             {

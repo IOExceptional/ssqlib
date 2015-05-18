@@ -36,12 +36,25 @@ namespace SSQLib
         {
 
         }
+
+        /// <summary>
+        /// Pings the specified Source server to retreive information about it such as the server name, max players, current number of players, etc.
+        /// </summary>
+        /// <param name="ip">The string containing the IP address or hostname of the server</param>
+        /// <param name="port">The port of the server</param>
+        /// <returns>Information about the server or throws an SSQLServerException if it could not be retreived</returns>
+        public ServerInfo Server(string ip, int port)
+        {
+            IPEndPoint endPoint = EndPointHelpers.GetIPEndPointFromHostName(ip, port, true);
+            return Server(endPoint);
+        }
+
         /// <summary>
         /// Pings the specified Source server to retreive information about it such as the server name, max players, current number of players, etc.
         /// </summary>
         /// <param name="ip_end">The IPEndPoint object containing the IP address and port of the server</param>
         /// <returns>Information about the server or throws an SSQLServerException if it could not be retreived</returns>
-        public ServerInfo Server(IPEndPoint ip_end)
+        public ServerInfo Server(EndPoint ip_end)
         {
             //Create a new empty server info object
             ServerInfo info = new ServerInfo();
@@ -191,8 +204,20 @@ namespace SSQLib
         /// <summary>
         /// Retreives information about the players on a Source server
         /// </summary>
+        /// <param name="ip">The string containing the IP address or hostname of the server</param>
+        /// <param name="port">The port of the server</param>
+        /// <returns>A List<> of PlayerInfo or throws an SSQLServerException if the server could not be reached</returns>
+        public List<PlayerInfo> Players(string ip, int port)
+        {
+            IPEndPoint endPoint = EndPointHelpers.GetIPEndPointFromHostName(ip, port, true);
+            return Players(endPoint);
+        }
+
+        /// <summary>
+        /// Retreives information about the players on a Source server
+        /// </summary>
         /// <param name="ip_end">The IPEndPoint object storing the IP address and port of the server</param>
-        /// <returns>An ArrayList of PlayerInfo or throws an SSQLServerException if the server could not be reached</returns>
+        /// <returns>A List<> of PlayerInfo or throws an SSQLServerException if the server could not be reached</returns>
         public List<PlayerInfo> Players(IPEndPoint ip_end)
         {
             //Create a new array list to store the player array

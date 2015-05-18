@@ -4,27 +4,27 @@ using Xunit;
 
 namespace Test.SSQLib
 {
-    public class ServerTests
+    public class PlayerTests
     {
         [Fact]
-        public void TestFakeServerThrowsExceptionWithIpEndpoint()
+        public void TestFakePlayerServerThrowsExceptionWithIpEndpoint()
         {
             Assert.Throws(typeof(SSQLServerException), () =>
                 {
                     SSQL query = new SSQL();
                     //127.0.0.2 set to stop loopback potentially resolving and failing test
-                    query.Server(new IPEndPoint(IPAddress.Parse("127.0.0.2"), 27015));
+                    query.Players(new IPEndPoint(IPAddress.Parse("127.0.0.2"), 27015));
                 });
         }
 
         [Fact]
-        public void TestFakeServerThrowsExceptionWithStringIp()
+        public void TestFakePlayerServerThrowsExceptionWithStringIp()
         {
             Assert.Throws(typeof(SSQLServerException), () =>
             {
                 SSQL query = new SSQL();
                 //127.0.0.2 set to stop loopback potentially resolving and failing test
-                query.Server("127.0.0.2", 27015);
+                query.Players("127.0.0.2", 27015);
             });
         }
     }
