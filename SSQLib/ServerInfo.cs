@@ -40,6 +40,7 @@ namespace SSQLib
 
         private bool passworded = false;
         private bool vac = false;
+		private bool locked = false;
         private ServerInfo.DedicatedType dedicated = ServerInfo.DedicatedType.NONE;
         private ServerInfo.OSType os = ServerInfo.OSType.NONE;
 
@@ -224,10 +225,23 @@ namespace SSQLib
             }
         }
 
-        /// <summary>
-        /// Stores the app ID of the game used by the server
-        /// </summary>
-        public string AppID
+		/// <summary>
+		/// Stores whether the server is locked or not
+		/// </summary>
+		public bool Locked {
+			get {
+				return this.locked;
+			}
+
+			set {
+				this.locked = value;
+			}
+		}
+
+		/// <summary>
+		/// Stores the app ID of the game used by the server
+		/// </summary>
+		public string AppID
         {
             get
             {
