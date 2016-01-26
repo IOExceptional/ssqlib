@@ -198,7 +198,22 @@ namespace SSQLib
             //Set the version
             info.Version = versionInfo.ToString();
 
-            return info;
+			StringBuilder sb = new StringBuilder();
+			while (buf[i] != 0) {
+				sb.Append((char)buf[i]);
+				i++;
+			}
+
+			char[] trimChars = new char[] { ',' };
+			List < string > list = sb.ToString().TrimEnd(trimChars).Split(new char[] { ',' }).ToList<string>();
+			
+			if (list.Contains("lt")) {
+				info.Locked = true;
+			} else {
+				info.Locked = false;
+			}
+
+			return info;
         }
 
         /// <summary>
