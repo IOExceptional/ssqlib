@@ -68,7 +68,7 @@ namespace SSQLib
             return rcvPacketInfo;
         }
 
-        internal static byte[] getInfo(IPEndPoint ipe, byte[] request)
+        internal static byte[] getInfo(EndPoint ipe, byte[] request)
         {
             //Create the socket
             Socket srvSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
@@ -92,12 +92,11 @@ namespace SSQLib
 
             //Create a new receive buffer
             byte[] rcvPacketInfo = new byte[packetSize];
-            EndPoint Remote = (EndPoint)ipe;
 
             try
             {
                 //Receive the data from the server
-                srvSocket.ReceiveFrom(rcvPacketInfo, ref Remote);
+                srvSocket.ReceiveFrom(rcvPacketInfo, ref ipe);
             }
             catch (SocketException se)
             {
