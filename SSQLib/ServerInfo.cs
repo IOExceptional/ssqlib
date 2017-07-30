@@ -27,23 +27,6 @@ namespace SSQLib
     /// </summary>
     public class ServerInfo
     {
-        private string name = "";
-        private string ip = "";
-        private string port = "";
-        private string game = "";
-        private string gameVersion = "";
-        private string appID = "";
-        private string map = "";
-        private string playerCount = "";
-        private string botCount = "";
-        private string maxPlayers = "";
-
-        private bool passworded = false;
-        private bool vac = false;
-		private bool locked = false;
-        private ServerInfo.DedicatedType dedicated = ServerInfo.DedicatedType.NONE;
-        private ServerInfo.OSType os = ServerInfo.OSType.NONE;
-
         /// <summary>
         /// Creates a new object with default values
         /// </summary>
@@ -52,239 +35,77 @@ namespace SSQLib
         /// <summary>
         /// The name of the server
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                this.name = value;
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// The IP address of the server
         /// </summary>
-        public string IP
-        {
-            get
-            {
-                return this.ip;
-            }
-
-            set
-            {
-                this.ip = value;
-            }
-        }
+        public string IP { get; set; }
 
         /// <summary>
         /// The port the server uses
         /// </summary>
-        public string Port
-        {
-            get
-            {
-                return this.port;
-            }
-
-            set
-            {
-                this.port = value;
-            }
-        }
+        public string Port { get; set; }
 
         /// <summary>
         /// The game being played on the server (i.e. Team Fortress (tf))
         /// </summary>
-        public string Game
-        {
-            get
-            {
-                return this.game;
-            }
-
-            set
-            {
-                this.game = value;
-            }
-        }
+        public string Game { get; set; }
 
         /// <summary>
         /// The game version running on the server
         /// </summary>
-        public string Version
-        {
-            get
-            {
-                return this.gameVersion;
-            }
-
-            set
-            {
-                this.gameVersion = value;
-            }
-        }
+        public string Version { get; set; }
 
         /// <summary>
         /// The map currently being played on the server
         /// </summary>
-        public string Map
-        {
-            get
-            {
-                return this.map;
-            }
-
-            set
-            {
-                this.map = value;
-            }
-        }
+        public string Map { get; set; }
 
         /// <summary>
         /// The current player count on the server
         /// </summary>
-        public string PlayerCount
-        {
-            get
-            {
-                return this.playerCount;
-            }
-
-            set
-            {
-                this.playerCount = value;
-            }
-        }
+        public string PlayerCount { get; set; }
 
         /// <summary>
         /// The current bot count on the server
         /// </summary>
-        public string BotCount
-        {
-            get
-            {
-                return this.botCount;
-            }
-
-            set
-            {
-                this.botCount = value;
-            }
-        }
+        public string BotCount { get; set; }
 
         /// <summary>
         /// The max amount of players allowed on the server
         /// </summary>
-        public string MaxPlayers
-        {
-            get
-            {
-                return this.maxPlayers;
-            }
-
-            set
-            {
-                this.maxPlayers = value;
-            }
-        }
+        public string MaxPlayers { get; set; }
 
         /// <summary>
         /// Stores whether the server is passworded or not
         /// </summary>
-        public bool Password
-        {
-            get
-            {
-                return this.passworded;
-            }
-
-            set
-            {
-                this.passworded = value;
-            }
-        }
+        public bool Password { get; set; }
 
         /// <summary>
         /// Stores whether the server is VAC protected or not
         /// </summary>
-        public bool VAC
-        {
-            get
-            {
-                return this.vac;
-            }
-
-            set
-            {
-                this.vac = value;
-            }
-        }
+        public bool VAC { get; set; }
 
 		/// <summary>
 		/// Stores whether the server is locked or not
 		/// </summary>
-		public bool Locked {
-			get {
-				return this.locked;
-			}
-
-			set {
-				this.locked = value;
-			}
-		}
+		public bool Locked { get; set; }
 
 		/// <summary>
 		/// Stores the app ID of the game used by the server
 		/// </summary>
-		public string AppID
-        {
-            get
-            {
-                return this.appID;
-            }
-
-            set
-            {
-                this.appID = value;
-            }
-        }
+		public string AppID { get; set; }
 
         /// <summary>
         /// Stores the type of server running (Listen, Dedicated, SourceTV)
         /// </summary>
-        public ServerInfo.DedicatedType Dedicated
-        {
-            get
-            {
-                return this.dedicated;
-            }
-
-            set
-            {
-                this.dedicated = value;
-            }
-        }
+        public ServerInfo.DedicatedType Dedicated { get; set; }
 
         /// <summary>
         /// Stores the operating system of the server (Windows, Linux)
         /// </summary>
-        public ServerInfo.OSType OS
-        {
-            get
-            {
-                return this.os;
-            }
-
-            set
-            {
-                this.os = value;
-            }
-        }
+        public ServerInfo.OSType OS { get; set; }
 
         /// <summary>
         /// Used to describe the type of server running

@@ -27,15 +27,6 @@ namespace SSQLib
     /// </summary>
     public class PlayerInfo
     {
-        private string name = "";
-        private int index = -9999;
-        private int kills = -9999;
-        private int deaths = -9999;
-        private int score = -9999;
-        private int ping = -9999;
-        private int rate = -9999;
-        private float time = 0.0f;
-
         /// <summary>
         /// Creates a new PlayerInfo object with default values
         /// </summary>
@@ -44,127 +35,41 @@ namespace SSQLib
         /// <summary>
         /// The name of the player
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                this.name = value;
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// The amount of kills the player has (default: -9999)
         /// </summary>
-        public int Kills
-        {
-            get { 
-                return this.kills; 
-            }
-
-            set { 
-                this.kills = value; 
-            }
-        }
+        public int Kills { get; set; } = -9999;
 
         /// <summary>
         /// The amount of deaths the player has (default: -9999)
         /// </summary>
-        public int Deaths
-        {
-            get
-            {
-                return this.deaths;
-            }
-
-            set
-            {
-                this.deaths = value;
-            }
-        }
+        public int Deaths { get; set; } = -9999;
 
         /// <summary>
         /// The score of the player (default: -9999)
         /// </summary>
-        public int Score
-        {
-            get
-            {
-                return this.score;
-            }
-
-            set
-            {
-                this.score = value;
-            }
-        }
+        public int Score { get; set; } = -9999;
 
         /// <summary>
         /// The ping of the player (default: -9999)
         /// </summary>
-        public int Ping
-        {
-            get
-            {
-                return this.ping;
-            }
-
-            set
-            {
-                this.ping = value;
-            }
-        }
+        public int Ping { get; set; } = -9999;
 
         /// <summary>
         /// The rate(?) of the player (default: -9999)
         /// </summary>
-        public int Rate
-        {
-            get
-            {
-                return this.rate;
-            }
-
-            set
-            {
-                this.rate = value;
-            }
-        }
+        public int Rate { get; set; } = -9999;
 
         /// <summary>
-        /// The index of the player in the server
+        /// The index of the player in the server (default: -9999)
         /// </summary>
-        public int Index
-        {
-            get
-            {
-                return this.index;
-            }
-
-            set
-            {
-                this.index = value;
-            }
-        }
+        public int Index { get; set; } = -9999;
 
         /// <summary>
         /// The time the player has been in the server
         /// </summary>
-        public float Time
-        {
-            get
-            {
-                return this.time;
-            }
-
-            set
-            {
-                this.time = value;
-            }
-        }
+        public float Time { get; set; } = 0.0f;
     }
 }
