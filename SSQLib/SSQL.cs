@@ -15,12 +15,10 @@
  *   along with SSQLib.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net;
-using System.Collections;
 
 namespace SSQLib
 {
@@ -32,10 +30,7 @@ namespace SSQLib
         /// <summary>
         /// Generates an SSQL object with default values
         /// </summary>
-        public SSQL()
-        {
-
-        }
+        public SSQL() { }
 
         /// <summary>
         /// Pings the specified Source server to retreive information about it such as the server name, max players, current number of players, etc.
@@ -140,7 +135,7 @@ namespace SSQLib
 
             info.Game = gameFriendly.ToString() + " (" + gameName.ToString() + ")";
 
-            short appID = (short)System.BitConverter.ToInt16(buf, i);
+            short appID = System.BitConverter.ToInt16(buf, i);
 
             //Skip the next 2 bytes
             i += 2;

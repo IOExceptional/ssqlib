@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 
 namespace SSQLib
 {
@@ -10,7 +7,7 @@ namespace SSQLib
     {
         public static IPEndPoint GetIPEndPointFromHostName(string hostName, int port, bool throwIfMoreThanOneIP)
         {
-            var addresses = System.Net.Dns.GetHostAddresses(hostName);
+            var addresses = Dns.GetHostAddresses(hostName);
             if (addresses.Length == 0)
             {
                 throw new ArgumentException(
