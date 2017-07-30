@@ -355,16 +355,16 @@ namespace SSQLib
                 newPlayer.Name = playerName.ToString();
 
                 //Get the score and store them in the player info
-                newPlayer.Score = (int)(buf[i] & 255) | ((buf[i + 1] & 255) << 8) | ((buf[i + 2] & 255) << 16) | ((buf[i + 3] & 255) << 24);
+                newPlayer.Score = BitConverter.ToInt32(buf, i);
 
                 //Move to the next item
-                i += 5;
+                i += 4;
 
                 //Get the time connected as a float and store it in the player info
-                newPlayer.Time = (float)((int)(buf[i] & 255) | ((buf[i + 1] & 255) << 8));
+                newPlayer.Time = BitConverter.ToSingle(buf, i);
 
                 //Move past the float
-                i += 3;
+                i += 4;
 
                 //Add the player to the list
                 players.Add(newPlayer);
