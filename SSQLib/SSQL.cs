@@ -354,8 +354,8 @@ namespace SSQLib
 
                 newPlayer.Name = playerName.ToString();
 
-                //Get the kills and store them in the player info
-                newPlayer.Kills = (int)(buf[i] & 255) | ((buf[i + 1] & 255) << 8) | ((buf[i + 2] & 255) << 16) | ((buf[i + 3] & 255) << 24);
+                //Get the score and store them in the player info
+                newPlayer.Score = (int)(buf[i] & 255) | ((buf[i + 1] & 255) << 8) | ((buf[i + 2] & 255) << 16) | ((buf[i + 3] & 255) << 24);
 
                 //Move to the next item
                 i += 5;
