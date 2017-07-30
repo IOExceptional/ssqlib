@@ -15,11 +15,6 @@
  *   along with SSQLib.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace SSQLib
 {
     /// <summary>
@@ -27,23 +22,6 @@ namespace SSQLib
     /// </summary>
     public class ServerInfo
     {
-        private string name = "";
-        private string ip = "";
-        private string port = "";
-        private string game = "";
-        private string gameVersion = "";
-        private string appID = "";
-        private string map = "";
-        private string playerCount = "";
-        private string botCount = "";
-        private string maxPlayers = "";
-
-        private bool passworded = false;
-        private bool vac = false;
-		private bool locked = false;
-        private ServerInfo.DedicatedType dedicated = ServerInfo.DedicatedType.NONE;
-        private ServerInfo.OSType os = ServerInfo.OSType.NONE;
-
         /// <summary>
         /// Creates a new object with default values
         /// </summary>
@@ -52,239 +30,91 @@ namespace SSQLib
         /// <summary>
         /// The name of the server
         /// </summary>
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-
-            set
-            {
-                this.name = value;
-            }
-        }
-
-        /// <summary>
-        /// The IP address of the server
-        /// </summary>
-        public string IP
-        {
-            get
-            {
-                return this.ip;
-            }
-
-            set
-            {
-                this.ip = value;
-            }
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// The port the server uses
         /// </summary>
-        public string Port
-        {
-            get
-            {
-                return this.port;
-            }
-
-            set
-            {
-                this.port = value;
-            }
-        }
+        public short Port { get; set; }
 
         /// <summary>
         /// The game being played on the server (i.e. Team Fortress (tf))
         /// </summary>
-        public string Game
-        {
-            get
-            {
-                return this.game;
-            }
+        public string Game { get; set; }
 
-            set
-            {
-                this.game = value;
-            }
-        }
+        /// <summary>
+		/// Stores the app ID of the game used by the server
+		/// </summary>
+		public short AppID { get; set; }
 
         /// <summary>
         /// The game version running on the server
         /// </summary>
-        public string Version
-        {
-            get
-            {
-                return this.gameVersion;
-            }
-
-            set
-            {
-                this.gameVersion = value;
-            }
-        }
+        public string Version { get; set; }
 
         /// <summary>
         /// The map currently being played on the server
         /// </summary>
-        public string Map
-        {
-            get
-            {
-                return this.map;
-            }
-
-            set
-            {
-                this.map = value;
-            }
-        }
+        public string Map { get; set; }
 
         /// <summary>
         /// The current player count on the server
         /// </summary>
-        public string PlayerCount
-        {
-            get
-            {
-                return this.playerCount;
-            }
-
-            set
-            {
-                this.playerCount = value;
-            }
-        }
-
-        /// <summary>
-        /// The current bot count on the server
-        /// </summary>
-        public string BotCount
-        {
-            get
-            {
-                return this.botCount;
-            }
-
-            set
-            {
-                this.botCount = value;
-            }
-        }
+        public byte PlayerCount { get; set; }
 
         /// <summary>
         /// The max amount of players allowed on the server
         /// </summary>
-        public string MaxPlayers
-        {
-            get
-            {
-                return this.maxPlayers;
-            }
+        public byte MaxPlayers { get; set; }
 
-            set
-            {
-                this.maxPlayers = value;
-            }
-        }
+        /// <summary>
+        /// The current bot count on the server
+        /// </summary>
+        public byte BotCount { get; set; }
 
         /// <summary>
         /// Stores whether the server is passworded or not
         /// </summary>
-        public bool Password
-        {
-            get
-            {
-                return this.passworded;
-            }
-
-            set
-            {
-                this.passworded = value;
-            }
-        }
+        public bool Password { get; set; }
 
         /// <summary>
         /// Stores whether the server is VAC protected or not
         /// </summary>
-        public bool VAC
-        {
-            get
-            {
-                return this.vac;
-            }
-
-            set
-            {
-                this.vac = value;
-            }
-        }
-
-		/// <summary>
-		/// Stores whether the server is locked or not
-		/// </summary>
-		public bool Locked {
-			get {
-				return this.locked;
-			}
-
-			set {
-				this.locked = value;
-			}
-		}
-
-		/// <summary>
-		/// Stores the app ID of the game used by the server
-		/// </summary>
-		public string AppID
-        {
-            get
-            {
-                return this.appID;
-            }
-
-            set
-            {
-                this.appID = value;
-            }
-        }
+        public bool VAC { get; set; }
 
         /// <summary>
         /// Stores the type of server running (Listen, Dedicated, SourceTV)
         /// </summary>
-        public ServerInfo.DedicatedType Dedicated
-        {
-            get
-            {
-                return this.dedicated;
-            }
-
-            set
-            {
-                this.dedicated = value;
-            }
-        }
+        public DedicatedType Dedicated { get; set; }
 
         /// <summary>
         /// Stores the operating system of the server (Windows, Linux)
         /// </summary>
-        public ServerInfo.OSType OS
-        {
-            get
-            {
-                return this.os;
-            }
+        public OSType OS { get; set; }
 
-            set
-            {
-                this.os = value;
-            }
-        }
+        /// <summary>
+        /// Stores the Steam ID of the server
+        /// </summary>
+        public ulong SteamID { get; set; }
+
+        /// <summary>
+        /// Spectator port number for SourceTV.
+        /// </summary>
+        public short SourceTVPort { get; set; }
+        /// <summary>
+        /// Name of the spectator server for SourceTV.
+        /// </summary>
+        public string SourceTVServerName { get; set; }
+
+        /// <summary>
+        /// Tags that describe the game according to the server (for future use.)
+        /// </summary>
+        public string Keywords { get; set; }
+
+        /// <summary>
+        /// The server's 64-bit GameID. If this is present, a more accurate AppID is present in the low 24 bits. The earlier AppID could have been truncated as it was forced into 16-bit storage.
+        /// </summary>
+        public ulong GameID { get; set; }
 
         /// <summary>
         /// Used to describe the type of server running

@@ -16,10 +16,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.IO;
 
 namespace SSQLib
 {
@@ -47,7 +44,7 @@ namespace SSQLib
                 data_byte[3] = 0xff;
 
                 //Copy the data to the new request
-                Array.Copy(ASCIIEncoding.UTF8.GetBytes(Data), 0, data_byte, 4, Data.Length);
+                Array.Copy(Encoding.UTF8.GetBytes(Data), 0, data_byte, 4, Data.Length);
             }
             //Empty request to get challenge
             else

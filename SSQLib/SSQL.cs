@@ -17,10 +17,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Net;
-using System.Collections;
 
 namespace SSQLib
 {
@@ -32,10 +30,7 @@ namespace SSQLib
         /// <summary>
         /// Generates an SSQL object with default values
         /// </summary>
-        public SSQL()
-        {
-
-        }
+        public SSQL() { }
 
         /// <summary>
         /// Pings the specified Source server to retreive information about it such as the server name, max players, current number of players, etc.
@@ -140,22 +135,20 @@ namespace SSQLib
 
             info.Game = gameFriendly.ToString() + " (" + gameName.ToString() + ")";
 
-            short appID = (short)System.BitConverter.ToInt16(buf, i);
+            //Store the app id
+            info.AppID = BitConverter.ToInt16(buf, i);
 
             //Skip the next 2 bytes
             i += 2;
 
-            //Store the app id
-            info.AppID = appID.ToString();
-
             //Get the number of players
-            info.PlayerCount = buf[i++].ToString();
+            info.PlayerCount = buf[i++];
 
             //Get the number of max players
-            info.MaxPlayers = buf[i++].ToString();
+            info.MaxPlayers = buf[i++];
 
             //Get the number of bots
-            info.BotCount = buf[i++].ToString();
+            info.BotCount = buf[i++];
 
             //Get the dedicated server type
             if ((char)buf[i] == 'l')
@@ -198,22 +191,60 @@ namespace SSQLib
             //Set the version
             info.Version = versionInfo.ToString();
 
-			StringBuilder sb = new StringBuilder();
-			while (buf[i] != 0) {
-				sb.Append((char)buf[i]);
-				i++;
-			}
+            if (buf.Length <= i)
+                return info;
 
-			char[] trimChars = new char[] { ',' };
-			List < string > list = sb.ToString().TrimEnd(trimChars).Split(new char[] { ',' }).ToList<string>();
-			
-			if (list.Contains("lt")) {
-				info.Locked = true;
-			} else {
-				info.Locked = false;
-			}
+            byte extraData = buf[i];
+            i++;
 
-			return info;
+            if ((extraData & 0x80) == 0x80)
+            {
+                info.Port = BitConverter.ToInt16(buf, i);
+                i += 2;
+            }
+
+            if ((extraData & 0x10) == 0x10)
+            {
+                info.SteamID = BitConverter.ToUInt64(buf, i);
+                i += 8;
+            }
+
+            if ((extraData & 0x40) == 0x40)
+            {
+                info.SourceTVPort = BitConverter.ToInt16(buf, i);
+                i += 2;
+
+                var tvServerName = new StringBuilder();
+                while (buf[i] != 0x00)
+                {
+                    tvServerName.Append((char)buf[i]);
+                    i++;
+                }
+                i++;
+
+                info.SourceTVServerName = tvServerName.ToString();
+            }
+
+            if ((extraData & 0x20) == 0x20)
+            {
+                var keywords = new StringBuilder();
+                while (buf[i] != 0x00)
+                {
+                    keywords.Append((char)buf[i]);
+                    i++;
+                }
+                i++;
+
+                info.Keywords = keywords.ToString();
+            }
+
+            if ((extraData & 0x01) == 0x01)
+            {
+                info.GameID = BitConverter.ToUInt64(buf, i);
+                i += 8;
+            }
+
+            return info;
         }
 
         /// <summary>
@@ -243,15 +274,15 @@ namespace SSQLib
 
             //Create a challenge packet
             byte[] challenge = new byte[9];
-            challenge[0] = (byte)0xff;
-            challenge[1] = (byte)0xff;
-            challenge[2] = (byte)0xff;
-            challenge[3] = (byte)0xff;
-            challenge[4] = (byte)0x55;
-            challenge[5] = (byte)0x00;
-            challenge[6] = (byte)0x00;
-            challenge[7] = (byte)0x00;
-            challenge[8] = (byte)0x00;
+            challenge[0] = 0xff;
+            challenge[1] = 0xff;
+            challenge[2] = 0xff;
+            challenge[3] = 0xff;
+            challenge[4] = 0x55;
+            challenge[5] = 0x00;
+            challenge[6] = 0x00;
+            challenge[7] = 0x00;
+            challenge[8] = 0x00;
 
             try
             {
@@ -271,11 +302,11 @@ namespace SSQLib
             //Create the new request with the challenge number
             byte[] requestPlayer = new byte[9];
 
-            requestPlayer[0] = (byte)0xff;
-            requestPlayer[1] = (byte)0xff;
-            requestPlayer[2] = (byte)0xff;
-            requestPlayer[3] = (byte)0xff;
-            requestPlayer[4] = (byte)0x55;
+            requestPlayer[0] = 0xff;
+            requestPlayer[1] = 0xff;
+            requestPlayer[2] = 0xff;
+            requestPlayer[3] = 0xff;
+            requestPlayer[4] = 0x55;
             requestPlayer[5] = buf[i++];
             requestPlayer[6] = buf[i++];
             requestPlayer[7] = buf[i++];
@@ -323,17 +354,17 @@ namespace SSQLib
 
                 newPlayer.Name = playerName.ToString();
 
-                //Get the kills and store them in the player info
-                newPlayer.Kills = (int)(buf[i] & 255) | ((buf[i + 1] & 255) << 8) | ((buf[i + 2] & 255) << 16) | ((buf[i + 3] & 255) << 24);
+                //Get the score and store them in the player info
+                newPlayer.Score = BitConverter.ToInt32(buf, i);
 
                 //Move to the next item
-                i += 5;
+                i += 4;
 
                 //Get the time connected as a float and store it in the player info
-                newPlayer.Time = (float)((int)(buf[i] & 255) | ((buf[i + 1] & 255) << 8));
+                newPlayer.Time = BitConverter.ToSingle(buf, i);
 
                 //Move past the float
-                i += 3;
+                i += 4;
 
                 //Add the player to the list
                 players.Add(newPlayer);
