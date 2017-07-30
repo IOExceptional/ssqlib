@@ -15,11 +15,10 @@
  *   along with SSQLib.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Net;
-using System;
 
 namespace SSQLib
 {
@@ -275,15 +274,15 @@ namespace SSQLib
 
             //Create a challenge packet
             byte[] challenge = new byte[9];
-            challenge[0] = (byte)0xff;
-            challenge[1] = (byte)0xff;
-            challenge[2] = (byte)0xff;
-            challenge[3] = (byte)0xff;
-            challenge[4] = (byte)0x55;
-            challenge[5] = (byte)0x00;
-            challenge[6] = (byte)0x00;
-            challenge[7] = (byte)0x00;
-            challenge[8] = (byte)0x00;
+            challenge[0] = 0xff;
+            challenge[1] = 0xff;
+            challenge[2] = 0xff;
+            challenge[3] = 0xff;
+            challenge[4] = 0x55;
+            challenge[5] = 0x00;
+            challenge[6] = 0x00;
+            challenge[7] = 0x00;
+            challenge[8] = 0x00;
 
             try
             {
@@ -303,11 +302,11 @@ namespace SSQLib
             //Create the new request with the challenge number
             byte[] requestPlayer = new byte[9];
 
-            requestPlayer[0] = (byte)0xff;
-            requestPlayer[1] = (byte)0xff;
-            requestPlayer[2] = (byte)0xff;
-            requestPlayer[3] = (byte)0xff;
-            requestPlayer[4] = (byte)0x55;
+            requestPlayer[0] = 0xff;
+            requestPlayer[1] = 0xff;
+            requestPlayer[2] = 0xff;
+            requestPlayer[3] = 0xff;
+            requestPlayer[4] = 0x55;
             requestPlayer[5] = buf[i++];
             requestPlayer[6] = buf[i++];
             requestPlayer[7] = buf[i++];
