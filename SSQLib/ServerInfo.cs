@@ -33,19 +33,19 @@ namespace SSQLib
         public string Name { get; set; }
 
         /// <summary>
-        /// The IP address of the server
-        /// </summary>
-        public string IP { get; set; }
-
-        /// <summary>
         /// The port the server uses
         /// </summary>
-        public string Port { get; set; }
+        public short Port { get; set; }
 
         /// <summary>
         /// The game being played on the server (i.e. Team Fortress (tf))
         /// </summary>
         public string Game { get; set; }
+
+        /// <summary>
+		/// Stores the app ID of the game used by the server
+		/// </summary>
+		public short AppID { get; set; }
 
         /// <summary>
         /// The game version running on the server
@@ -60,17 +60,17 @@ namespace SSQLib
         /// <summary>
         /// The current player count on the server
         /// </summary>
-        public string PlayerCount { get; set; }
-
-        /// <summary>
-        /// The current bot count on the server
-        /// </summary>
-        public string BotCount { get; set; }
+        public byte PlayerCount { get; set; }
 
         /// <summary>
         /// The max amount of players allowed on the server
         /// </summary>
-        public string MaxPlayers { get; set; }
+        public byte MaxPlayers { get; set; }
+
+        /// <summary>
+        /// The current bot count on the server
+        /// </summary>
+        public byte BotCount { get; set; }
 
         /// <summary>
         /// Stores whether the server is passworded or not
@@ -82,25 +82,39 @@ namespace SSQLib
         /// </summary>
         public bool VAC { get; set; }
 
-		/// <summary>
-		/// Stores whether the server is locked or not
-		/// </summary>
-		public bool Locked { get; set; }
-
-		/// <summary>
-		/// Stores the app ID of the game used by the server
-		/// </summary>
-		public string AppID { get; set; }
-
         /// <summary>
         /// Stores the type of server running (Listen, Dedicated, SourceTV)
         /// </summary>
-        public ServerInfo.DedicatedType Dedicated { get; set; }
+        public DedicatedType Dedicated { get; set; }
 
         /// <summary>
         /// Stores the operating system of the server (Windows, Linux)
         /// </summary>
-        public ServerInfo.OSType OS { get; set; }
+        public OSType OS { get; set; }
+
+        /// <summary>
+        /// Stores the Steam ID of the server
+        /// </summary>
+        public ulong SteamID { get; set; }
+
+        /// <summary>
+        /// Spectator port number for SourceTV.
+        /// </summary>
+        public short SourceTVPort { get; set; }
+        /// <summary>
+        /// Name of the spectator server for SourceTV.
+        /// </summary>
+        public string SourceTVServerName { get; set; }
+
+        /// <summary>
+        /// Tags that describe the game according to the server (for future use.)
+        /// </summary>
+        public string Keywords { get; set; }
+
+        /// <summary>
+        /// The server's 64-bit GameID. If this is present, a more accurate AppID is present in the low 24 bits. The earlier AppID could have been truncated as it was forced into 16-bit storage.
+        /// </summary>
+        public ulong GameID { get; set; }
 
         /// <summary>
         /// Used to describe the type of server running

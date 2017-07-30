@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Net;
+using System;
 
 namespace SSQLib
 {
@@ -135,22 +136,20 @@ namespace SSQLib
 
             info.Game = gameFriendly.ToString() + " (" + gameName.ToString() + ")";
 
-            short appID = System.BitConverter.ToInt16(buf, i);
+            //Store the app id
+            info.AppID = BitConverter.ToInt16(buf, i);
 
             //Skip the next 2 bytes
             i += 2;
 
-            //Store the app id
-            info.AppID = appID.ToString();
-
             //Get the number of players
-            info.PlayerCount = buf[i++].ToString();
+            info.PlayerCount = buf[i++];
 
             //Get the number of max players
-            info.MaxPlayers = buf[i++].ToString();
+            info.MaxPlayers = buf[i++];
 
             //Get the number of bots
-            info.BotCount = buf[i++].ToString();
+            info.BotCount = buf[i++];
 
             //Get the dedicated server type
             if ((char)buf[i] == 'l')
@@ -193,22 +192,60 @@ namespace SSQLib
             //Set the version
             info.Version = versionInfo.ToString();
 
-			StringBuilder sb = new StringBuilder();
-			while (buf[i] != 0) {
-				sb.Append((char)buf[i]);
-				i++;
-			}
+            if (buf.Length <= i)
+                return info;
 
-			char[] trimChars = new char[] { ',' };
-			List < string > list = sb.ToString().TrimEnd(trimChars).Split(new char[] { ',' }).ToList<string>();
-			
-			if (list.Contains("lt")) {
-				info.Locked = true;
-			} else {
-				info.Locked = false;
-			}
+            byte extraData = buf[i];
+            i++;
 
-			return info;
+            if ((extraData & 0x80) == 0x80)
+            {
+                info.Port = BitConverter.ToInt16(buf, i);
+                i += 2;
+            }
+
+            if ((extraData & 0x10) == 0x10)
+            {
+                info.SteamID = BitConverter.ToUInt64(buf, i);
+                i += 8;
+            }
+
+            if ((extraData & 0x40) == 0x40)
+            {
+                info.SourceTVPort = BitConverter.ToInt16(buf, i);
+                i += 2;
+
+                var tvServerName = new StringBuilder();
+                while (buf[i] != 0x00)
+                {
+                    tvServerName.Append((char)buf[i]);
+                    i++;
+                }
+                i++;
+
+                info.SourceTVServerName = tvServerName.ToString();
+            }
+
+            if ((extraData & 0x20) == 0x20)
+            {
+                var keywords = new StringBuilder();
+                while (buf[i] != 0x00)
+                {
+                    keywords.Append((char)buf[i]);
+                    i++;
+                }
+                i++;
+
+                info.Keywords = keywords.ToString();
+            }
+
+            if ((extraData & 0x01) == 0x01)
+            {
+                info.GameID = BitConverter.ToUInt64(buf, i);
+                i += 8;
+            }
+
+            return info;
         }
 
         /// <summary>
